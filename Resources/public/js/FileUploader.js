@@ -15,6 +15,8 @@ function PunkAveFileUploader(options)
   
   self.errorCallback = 'errorCallback' in options ? options.errorCallback : function( info ) { if (window.console && console.log) { console.log(info) } },
 
+  self.successCallback = 'onSuccess' in options ? options.onSuccess : function(info){};
+
   self.addExistingFiles = function(files)
   {
     _.each(files, function(file) {
@@ -105,6 +107,7 @@ function PunkAveFileUploader(options)
         url: setQueryParameter(uploadUrl, 'file', name),
         success: function() {
           file.remove();
+          self.onSuccess(info);
         },
         dataType: 'json'
       });

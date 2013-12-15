@@ -34,11 +34,22 @@
         <% if ('undefined' != typeof thumbnail_url) { %>
             <img src="<%- thumbnail_url %>" class="thumbnail-image" />
         <% } %>
+
         <div class="caption">
             <span class="filename"><%- name %></span>
-            <a rel="tooltip" title="Download Original" class="download thumbnail-action btn" target="download" href="<%- url %>"><i class="icon-download"></i></a>
+            <a rel="tooltip" title="Download Original" class="download thumbnail-action btn" target="download" href="<%- url %>"><i class="glyphicon glyphicon-download"></i></a>
             {# ACHTUNG: data-action="delete" matters to javascript #}
-            <a rel="tooltip" title="Delete" data-action="delete" class="delete thumbnail-action btn" href="#delete"><i class="icon-trash"></i></a>
+            <a rel="tooltip" title="Delete" data-action="delete" class="delete thumbnail-action btn" href="#delete"><i class="glyphicon glyphicon-trash"></i></a>
+        </div>
+
+        <div>
+            <form>
+                {{ form_row('title') }}
+                {{ form_row('artist') }}
+                {{ form_row('track') }}
+                {{ form_row('disc') }}
+                {{ form_row('date_published') }}
+            </form>
         </div>
     </li>
 </script>
